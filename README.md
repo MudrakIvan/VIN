@@ -15,9 +15,9 @@ Graphical web application built as a project for [VIN](https://www.fit.vut.cz/st
 
 ### Keyboard Shortcuts
 
-- `S` - Save image as PNG
-- `P` - Pause/Resume animation
-- `G` - Quick GIF export (1.5s duration, 0.5s delay)
+- `s` - Save image as PNG
+- `p` - Pause/Resume animation
+- `g` - Quick GIF export (1.5s duration, 0.5s delay)
 - `Esc` - Close dialogs
 
 ## Installation
