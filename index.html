@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reflector</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="lib/p5.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <h1>Reflector</h1>
+        <button id="showInfo" class="info-button" aria-label="Show Information">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+        </button>
+    </nav>
+
+    <dialog id="infoModal" class="modal">
+        <div class="modal-content">
+            <h2>How to Use Reflector</h2>
+
+            <section class="info-section">
+                <h3>Keyboard Shortcuts</h3>
+                <ul class="shortcuts-list">
+                    <li><kbd>s</kbd> Save image</li>
+                    <li><kbd>p</kbd> Pause/Resume animation</li>
+                    <li><kbd>g</kbd> Quick GIF export (with duration 1.5s and delay 0.5s)</li>
+                    <li><kbd>Esc</kbd> Close dialogs</li>
+                </ul>
+            </section>
+
+            <section class="info-section">
+                <h3>Basic Usage</h3>
+                <ol class="usage-steps">
+                    <li>Upload an image using drag & drop or file selector</li>
+                    <li>Adjust radius and number of slices</li>
+                    <li>Choose reflection type</li>
+                    <li>Adjust cone height for perspective effect</li>
+                    <li>Export as image or animated GIF</li>
+                </ol>
+            </section>
+
+            <div class="modal-actions">
+                <button class="primary-button" id="closeInfo">Got it!</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="controls">
+        <div class="control-group">
+            <label for="imageUpload">Upload Image:</label>
+            <div class="drop-zone" id="dropZone">
+                <input type="file" id="imageUpload" accept="image/*">
+                <div class="drop-zone-text">
+                    Drag & drop image or click to upload
+                </div>
+                <img id="imagePreview" class="image-preview" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="radius">Radius: <span>100</span></label>
+            <input type="range" id="radius" min="10" max="350" value="100">
+        </div>
+
+        <div class="control-group">
+            <label for="sliceCount">Number of Slices: <span>6</span></label>
+            <input type="range" id="sliceCount" min="3" max="25" value="6">
+        </div>
+
+        <div class="control-group">
+            <label for="coneHeightMultiplier">Cone Height: <span>2</span></label>
+            <input type="range" id="coneHeightMultiplier" min="1" max="5" value="2" step="0.5">
+        </div>
+
+        <div class="control-group">
+            <label for="reflectionType">Reflection type:</label>
+            <select id="reflectionType">
+                <option value="none">None</option>
+                <option value="vertical">Vertical</option>
+                <option value="horizontal" selected="selected">Horizontal</option>
+                <option value="both">Both</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="background">Background color:</label>
+            <input type="color" id="background" value="#ffffff">
+        </div>
+    </div>
+
+    <div id="sketchContainer"></div>
+
+    <div class="actions">
+        <button id="save" class="primary-button">Save</button>
+
+        <button id="exportGif" class="secondary-button">Export GIF</button>
+    </div>
+
+    <dialog id="gifModal" class="modal">
+        <div class="modal-content">
+            <h2>Export GIF</h2>
+            <form id="gifForm">
+                <div class="control-group">
+                    <label for="gifDuration">Duration (seconds): <span>1.5</span></label>
+                    <input type="range" id="gifDuration" name="gifDuration" min="0.5" max="5" value="1.5" step="0.5">
+                </div>
+
+                <div class="control-group">
+                    <label for="gifOffset">Offset (second): <span>1</span></label>
+                    <input type="range" id="gifOffset" name="gifOffset" min="0" max="5" value="1" step="0.5">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" id="cancelGif">Cancel</button>
+                    <button type="submit" class="primary-button">Record GIF</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <footer>
+        <p>Made as school project for <a href="https://www.fit.vut.cz/study/course/VIN/.en">VIN</a> at <a
+                href="https://www.fit.vut.cz/.en">VUT FIT</a></p>
+    </footer>
+
+    <script type="module" src="init.js"></script>
+</body>
+
+</html>
