@@ -24,7 +24,7 @@ Graphical web application built as a project for [VIN](https://www.fit.vut.cz/st
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/reflector.git
+git clone https://github.com/MudrakIvan/VIN
 ```
 2. Serve the files using a local web server. For example using python:
 ```bash
